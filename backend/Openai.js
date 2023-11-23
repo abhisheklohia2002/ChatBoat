@@ -1,7 +1,8 @@
 const OpenAi = require("openai");
 const openai = new OpenAi.OpenAI({
-    apiKey: process.env.OpenAI, 
+    apiKey: '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', 
   });
+  // console.log(process.env.OpenAI)
 async function generateChatbotResponse(userMessage) {
     try {
       const chatCompletion = await openai.chat.completions.create({

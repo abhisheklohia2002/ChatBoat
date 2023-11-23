@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import "./chat.css"
-const socket = io('http://localhost:8080'); 
+const socket = io('https://chat-boat-three.vercel.app/'); 
 
 function ChatApp() {
   const [chatbot, setChatbot] = useState([]);

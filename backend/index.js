@@ -5,6 +5,7 @@ const { createServer } = require("http");
 const app = express();
 const server = createServer(app);
 const { Server } = require("socket.io");
+require('./db/conn');
 const io = new Server(server);
 
 const cors = require('cors');
@@ -14,7 +15,6 @@ app.use(cors());
 app.use(express.json());
 
 io.on("connection", (socket) => {
-  require('./db/conn');
   console.log("User is connected", socket.id);
 
   socket.on('chatMessage', async (data) => {
@@ -59,6 +59,18 @@ io.on("connection", (socket) => {
     console.log('User disconnected');
   });
 });
+
+
+app.get('/',async(req,res)=>{
+  try {
+    res.send({
+      msg:"chat is work"
+    })
+  } catch (error) {
+    
+  }
+})
+
 
 server.listen(8080, () => {
   console.log("Server is running");

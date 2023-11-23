@@ -24,33 +24,33 @@ io.on("connection", (socket) => {
 
     io.emit('message', { user: 'Chatbot', message: botResponse });
 
-    const check = await chatMessage.findOne({ email: data.user });
-    console.log(check);
+    // const check = await chatMessage.findOne({ email: data.user });
+    // console.log(check);
 
-    if (check) {
+    if (false) {
       const userMessage = { user: data.user, message: data.message };
       const chatBoat = { chatboat: "Chatboat", ChatMessage: botResponse };
 
       await chatMessage.updateOne(
         { _id: check._id },
-        { $push: { messages: { ...userMessage, ...chatBoat } } }
+        { $push: { message: { ...userMessage, ...chatBoat } } }
       );
 
       console.log("update");
     } else {
-      const newChatMessage = new chatMessage({
-        email: data.user,
-        messages: [
-          {
-            user: data.user,
-            message: data.message,
-            chatboat: "ChatBoat",
-            ChatMessage: botResponse
-          }
-        ]
-      });
+      // const newChatMessage = new chatMessage({
+      //   email: data.user,
+      //   message: [
+      //     {
+      //       user: data.user,
+      //       message: data.message,
+      //       chatboat: "ChatBoat",
+      //       ChatMessage: botResponse
+      //     }
+      //   ]
+      // });
 
-      await newChatMessage.save();
+      // await newChatMessage.save();
       console.log("save");
     }
   });

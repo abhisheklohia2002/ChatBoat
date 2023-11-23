@@ -1,6 +1,6 @@
 const OpenAi = require("openai");
 const openai = new OpenAi.OpenAI({
-    apiKey: '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', 
+    apiKey: process.env.OpenAI, 
   });
   // console.log(process.env.OpenAI)
 async function generateChatbotResponse(userMessage) {
